@@ -1,27 +1,27 @@
 # MusicNotationSystem
-### This is a music notation helper using simple input gestures to draw complicated music notes to the screen. The purpose of this project is to simplify the process of composing. [Instruction page](http://depts.washington.edu/cprogs/BCS/Books/BCS_MidJava.html). Below are usage and some details about all the files.
+#### This is a music notation helper using simple input gestures to draw complicated music notes to the screen. The purpose of this project is to simplify the process of composing. [Instruction page](http://depts.washington.edu/cprogs/BCS/Books/BCS_MidJava.html). Below are usage and some details about all the files.
 ### Usage:
-1. global gestures: N-N(an upward vertical line): undo
+1. global gesture: ```N-N```(an upward vertical line): undo
 2. on a page: 
-  - E-W(a rightward and then leftward horizontal line): adding a staff to the page
-  - E-E(a rightward horizontal line): adding a system to the page
+  - ```E-W```(a rightward and then leftward horizontal line): adding a staff to the page
+  - ```E-E```(a rightward horizontal line): adding a system to the page
 3. on a staff:
-  - S-S(a downward vertical line): draw a bar line across the system if there are multiple staffs in the system, else just in the current staff.
-  - SW-SW(a -125 degree directed line): draw a head at that position on the staff
-  - E-S(a rightward and then downward line): add an eighth rest 
-  - W-S(a rightward and then downward line): add a quarter rest 
-  - DOT: if the dot is near a repeating line, assign a direction to the repeating line; if near a stem, add a dot right after the stem, it there are already three dots, set to zero dots(just toggle between 0, 1, 2, 3 dots). Same if the dot is near a rest.
+  - ```S-S```(a downward vertical line): draw a bar line across the system if there are multiple staffs in the system, else just in the current staff.
+  - ```SW-SW```(a -125 degree directed line): draw a head at that position on the staff
+  - ```E-S```(a rightward and then downward line): add an eighth rest 
+  - ```W-S```(a rightward and then downward line): add a quarter rest 
+  - ```DOT```: if the dot is near a repeating line, assign a direction to the repeating line; if near a stem, add a dot right after the stem, it there are already three dots, set to zero dots(just toggle between 0, 1, 2, 3 dots). Same if the dot is near a rest.
 4. on a rest:
-  - E-E(a rightward horizontal line): increment the rest by one step, for example, eighth to sixteenth(range: whole - 64th)
-  - W-W(a leftward horizontal line): decrement the rest by one step, for example, quarter to eighth(range: whole - 64th)
-  - DOT: if the dot is near a rest, add a dot right after the rest, it there are already three dots, set to zero dots(just toggle between 0, 1, 2, 3 dots)
+  - ```E-E```(a rightward horizontal line): increment the rest by one step, for example, eighth to sixteenth(range: whole - 64th)
+  - ```W-W```(a leftward horizontal line): decrement the rest by one step, for example, quarter to eighth(range: whole - 64th)
+  - ```DOT```: if the dot is near a rest, add a dot right after the rest, it there are already three dots, set to zero dots(just toggle between 0, 1, 2, 3 dots)
 5. on a stem: (similar gestures with rest)
-  - E-E(a rightward horizontal line): if the line crosses two stems, add a beam to them. If crosses one stem, increment the stem by one step
-  - W-W: similar to rest
-  - DOT: similar to rest
+  - ```E-E```(a rightward horizontal line): if the line crosses two stems, add a beam to them. If crosses one stem, increment the stem by one step
+  - ```W-W```: similar to rest
+  - ```DOT```: similar to rest
 6. on a barline:
-  - S-S(a downward vertical line): If there's already a single barline, make it a double barline. If there's a double barline, make it a repeating line(no directions initially).
-  - DOT: if the dot is near a barline(single or double) or a repeating line, make is a directed repeating line. If the dot is to the left, make the repeating line open toward left, vice versa.
+  - ```S-S```(a downward vertical line): If there's already a single barline, make it a double barline. If there's a double barline, make it a repeating line(no directions initially).
+  - ```DOT```: if the dot is near a barline(single or double) or a repeating line, make is a directed repeating line. If the dot is to the left, make the repeating line open toward left, vice versa.
 ### files:
  - ```I.java```: a nested interface, containing all the sub-interfaces such as React, Hit and Draw
  - ```UC.java```: contains all public static final constants
