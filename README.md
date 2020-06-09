@@ -1,22 +1,5 @@
 # MusicNotationSystem
-### This is a music notation helper using simple input gestures to draw complicated music notes to the screen. The purpose of this project is to simplify the process of composing. [Instruction page](http://depts.washington.edu/cprogs/BCS/Books/BCS_MidJava.html). Below are some details about all the files.
-### files:
- - ```I.java```: a nested interface, containing all the sub-interfaces such as React, Hit and Draw
- - ```UC.java```: contains all public static final constants
- - ```Window.java```:  Window is both a JPanel which contains the paint proc and it is an adaptor for the two types of mouse listeners and the key listener. You can see this as a simple version of Swing. To build a simple windows app you extend Window and override paintComponent() and any of the listening behaviors like mouseClicked() or keyTyped()
- - ```G.java```: contains all of out graphical shapes like polylines, vectors and moving coordinate, also the vector transforming routines: first translate the original coordinates to the origin, then scale, then translate the origin up to the new coordinates.
- - ```Ink.java```: keeps a list of ink objects that we can show out to the screen and has a sub-class Ink. Buffer to hold the mouse trace as the user draws.
- - ```Shape.java```: shape trainer and comparator, takes input lines, transform to a standard scale, compare with or add to the database.
- - ```Reaction.java```: wrappers for lists of reactions and for the Map that will take us from a given shape to all the reactions that are looking for that particular shape. The Reaction class will eventually have a static method, best, that will give you back the winning reaction, if there was one, that was looking for that particular shape which won the bid.
- - ```Mass.java```: Mass is pretty simple. Most of the work will be done in subclasses that actually implement the show routine and that adds all the Reactions that this mass will need.
- - ```Layer.java```: has show routine to draw elements to the screen
- - ```Gesture.java```: gives us the mouse behavior that we will want for gestures (dn, drag, up)
- - ```Glyph.java```: take care of musical fonts, need to install [sinfonia.ttf](http://depts.washington.edu/cprogs/BCS/) first
- - ```AaMusic.java```: a driver of the whole system, creating layers and listen from users for mouse events
- - ```Time.java```: x value objects to deal with chord(shared x value notes) so that heads will have time property instead of x
- - ```Duration.java```: shared by both Stems and Rests. We would like both of those classes to extend Duration, to inherit its incFlag(), decFlag() and cycleDot()
- - ```Head.java```, ```Stem.java```, ```Flag.java```, ```Rest.java```, ```Staff.java```, ```Page.java```, ```Sys.java```, ```Beam.java```, ```Bar.java```:   
-     They all extend Mass and represent corresponding music notations as their names. In each of those classes, I added different reactions to achieve different functions. See the usage below.
+### This is a music notation helper using simple input gestures to draw complicated music notes to the screen. The purpose of this project is to simplify the process of composing. [Instruction page](http://depts.washington.edu/cprogs/BCS/Books/BCS_MidJava.html). Below are usage and some details about all the files.
 ### Usage:
 1. global gestures: N-N(an upward vertical line): undo
 2. on a page: 
@@ -39,3 +22,20 @@
 6. on a barline:
   - S-S(a downward vertical line): If there's already a single barline, make it a double barline. If there's a double barline, make it a repeating line(no directions initially).
   - DOT: if the dot is near a barline(single or double) or a repeating line, make is a directed repeating line. If the dot is to the left, make the repeating line open toward left, vice versa.
+### files:
+ - ```I.java```: a nested interface, containing all the sub-interfaces such as React, Hit and Draw
+ - ```UC.java```: contains all public static final constants
+ - ```Window.java```:  Window is both a JPanel which contains the paint proc and it is an adaptor for the two types of mouse listeners and the key listener. You can see this as a simple version of Swing. To build a simple windows app you extend Window and override paintComponent() and any of the listening behaviors like mouseClicked() or keyTyped()
+ - ```G.java```: contains all of out graphical shapes like polylines, vectors and moving coordinate, also the vector transforming routines: first translate the original coordinates to the origin, then scale, then translate the origin up to the new coordinates.
+ - ```Ink.java```: keeps a list of ink objects that we can show out to the screen and has a sub-class Ink. Buffer to hold the mouse trace as the user draws.
+ - ```Shape.java```: shape trainer and comparator, takes input lines, transform to a standard scale, compare with or add to the database.
+ - ```Reaction.java```: wrappers for lists of reactions and for the Map that will take us from a given shape to all the reactions that are looking for that particular shape. The Reaction class will eventually have a static method, best, that will give you back the winning reaction, if there was one, that was looking for that particular shape which won the bid.
+ - ```Mass.java```: Mass is pretty simple. Most of the work will be done in subclasses that actually implement the show routine and that adds all the Reactions that this mass will need.
+ - ```Layer.java```: has show routine to draw elements to the screen
+ - ```Gesture.java```: gives us the mouse behavior that we will want for gestures (dn, drag, up)
+ - ```Glyph.java```: take care of musical fonts, need to install [sinfonia.ttf](http://depts.washington.edu/cprogs/BCS/) first
+ - ```AaMusic.java```: a driver of the whole system, creating layers and listen from users for mouse events
+ - ```Time.java```: x value objects to deal with chord(shared x value notes) so that heads will have time property instead of x
+ - ```Duration.java```: shared by both Stems and Rests. We would like both of those classes to extend Duration, to inherit its incFlag(), decFlag() and cycleDot()
+ - ```Head.java```, ```Stem.java```, ```Flag.java```, ```Rest.java```, ```Staff.java```, ```Page.java```, ```Sys.java```, ```Beam.java```, ```Bar.java```:   
+     They all extend Mass and represent corresponding music notations as their names. In each of those classes, I added different reactions to achieve different functions. Details are shown in usage.
